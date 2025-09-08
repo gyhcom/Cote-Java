@@ -15,8 +15,8 @@ import java.util.*;
 public class P10814 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        sc.nextLine();
         int n = sc.nextInt();
+
         sc.nextLine(); // 개행 문자 제거
         List<Member> members = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -24,15 +24,23 @@ public class P10814 {
             String name = sc.next();
             members.add(new Member(age, name));
         }
+
+        members.sort(Comparator.comparingInt(m -> m.age));
+
+        for (Member member : members) {
+            System.out.println(member.age + " " + member.name);
+        }
     }
 
-    class Member {
+    static class Member {
         int age;
         String name;
 
-        Member(int age, String name) {
-            this.age = age;
-            this.name = name;
-        }
+    Member(int age, String name) {
+        this.age = age;
+        this.name = name;
     }
 }
+
+}
+
